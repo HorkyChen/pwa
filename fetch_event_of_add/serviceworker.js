@@ -6,11 +6,9 @@ if(!Cache.prototype.addAll){
         return Promise.all(requests.map(function(request){
             if(!(request instanceof Request)){
                 request = new Request(request);
-                // 传入的字串在多种情况下可以出现错误的情况，比如url中带有username,password等．
-                // If no valid HTTP/FTP/HTTPS prefix, convert to searching with google.
             }
             return fetch(request.clone()).then(function(res){
-                console.log(res);
+                console.log("response:",res);
                 if (res && res.status === 200) { // >=200 & <300 return OK
                     return cache.put(request, res);
                 }
