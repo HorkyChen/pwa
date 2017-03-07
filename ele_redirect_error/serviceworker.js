@@ -1,4 +1,4 @@
-var CACHE = 'cache-update-and-refresh';
+var CACHE = 'cache-redirect-error';
 // if(!Cache.prototype.addAll){
     Cache.prototype.addAll = function(requests){
         var cache = this;
@@ -8,11 +8,16 @@ var CACHE = 'cache-update-and-refresh';
             }
             console.log("Request:",request);
             return fetch(request.clone()).then(function(res){
-                console.log("response:",res);
-                if (res && res.status === 200) { // >=200 & <300 return OK
-                    console.log("put:",res);
-                    return cache.put(request, res);
+                if (res) {
+                  if (res.status === 200) { // >=200 & <300 return OK
+                      console.log("put:",res);
+                      return cache.put(request, res);
+                  } else {
+                    console.log("failed:",res);
+                  }  
                 }
+            }).catch(function(error){
+              console.log(error);
             });
         }));
     }
@@ -22,12 +27,6 @@ var CACHE = 'cache-update-and-refresh';
     }
 // }
 
-var urlsToCache = [
-    'https://www.baidu.com/',
-    'https://g.alicdn.com/secdev/sufei_data/2.0.4/index.js',
-    'https://g.alicdn.com/mui/fetch/4.1.8/??jsonp.js,fetch.js,tool.js',
-    'https://img.alicdn.com/bao/uploaded/i4/TB1i5udPFXXXXXqXVXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp'    
-];
 
 // On install, cache some resource.
 self.addEventListener('install', function(evt) {
@@ -36,8 +35,7 @@ self.addEventListener('install', function(evt) {
   // to the cache. Ask the service worker to keep installing until the
   // returning promise resolves.
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
-    cache.add('./caching.html');
-    cache.addAll(urlsToCache);
+    cache.add('https://h5.ele.me/order/');
   }));
 });
 
