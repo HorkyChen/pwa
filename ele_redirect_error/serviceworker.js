@@ -7,7 +7,7 @@ var CACHE = 'cache-redirect-error';
                 request = new Request(request);
             }
             console.log("Request:",request);
-            return fetch(request.clone(), {mode: 'no-cors'}).then(function(res){
+            return fetch(request.clone()).then(function(res){
                 if (res) {
                   if (res.status === 200) { // >=200 & <300 return OK
                       console.log("put:",res);
