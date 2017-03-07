@@ -12,7 +12,7 @@ var testingkeys;
                 console.log("response:",res);
                 if (res && res.status === 200) { // >=200 & <300 return OK
                     console.log("put:",res);
-                    testingkeys = res.headers.keys().clone();
+                    testingkeys = res.headers.keys();
                     return cache.put(request, res);
                 }
             });
