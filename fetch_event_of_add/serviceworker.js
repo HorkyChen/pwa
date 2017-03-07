@@ -23,7 +23,7 @@ var CACHE = 'cache-update-and-refresh';
 // }
 
 var urlsToCache = [
-    'https://www.baidu.com/index.html',
+    'https://www.baidu.com/',
     'https://g.alicdn.com/secdev/sufei_data/2.0.4/index.js',
     'https://g.alicdn.com/mui/fetch/4.1.8/??jsonp.js,fetch.js,tool.js',
     'https://img.alicdn.com/bao/uploaded/i4/TB1i5udPFXXXXXqXVXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp'
@@ -36,8 +36,6 @@ self.addEventListener('install', function(evt) {
   // to the cache. Ask the service worker to keep installing until the
   // returning promise resolves.
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
-    // cache.delete('./caching.html');
-    // cache.delete('https://www.baidu.com/index.html');
     cache.add('./caching.html');
     cache.addAll(urlsToCache);
   }));
