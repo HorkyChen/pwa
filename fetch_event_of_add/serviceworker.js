@@ -12,7 +12,7 @@ var CACHE = 'cache-update-and-refresh';
                 console.log("response:",res);
                 if (res && res.status === 200) { // >=200 & <300 return OK
                     console.log("put:",res);
-                    console.log("  headers:",res.headers);
+                    console.log("  headers:",res.headers.keys());
                     return cache.put(request, res);
                 }
             });
