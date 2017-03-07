@@ -12,9 +12,7 @@ var CACHE = 'cache-update-and-refresh';
                 console.log("response:",res);
                 if (res && res.status === 200) { // >=200 & <300 return OK
                     console.log("put:",res);
-                    for (key in res.headers.keys()){
-                      console.log( key + ": " + res.headers[key]);
-                    }
+                    window.testingkeys = res.headers.keys().clone();
                     return cache.put(request, res);
                 }
             });
