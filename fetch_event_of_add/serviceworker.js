@@ -7,6 +7,7 @@ if(!Cache.prototype.addAll){
             if(!(request instanceof Request)){
                 request = new Request(request);
             }
+            console.log("Request:",request);
             return fetch(request.clone()).then(function(res){
                 console.log("response:",res);
                 if (res && res.status === 200) { // >=200 & <300 return OK
