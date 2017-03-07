@@ -37,9 +37,8 @@ self.addEventListener('install', function(evt) {
   // to the cache. Ask the service worker to keep installing until the
   // returning promise resolves.
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
-    cache.delete('./caching.html');
-    cache.delete('https://www.baidu.com/index.html');
-
+    // cache.delete('./caching.html');
+    // cache.delete('https://www.baidu.com/index.html');
     cache.add('./caching.html');
     cache.addAll(urlsToCache);
   }));
