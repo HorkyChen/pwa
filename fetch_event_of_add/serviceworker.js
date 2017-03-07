@@ -14,7 +14,7 @@ var CACHE = 'cache-update-and-refresh';
                     console.log("put:",res);
                     for (key in res.headers.keys()){
                       console.log( key + ": " + res.headers[key]);
-}                   }
+                    }
                     return cache.put(request, res);
                 }
             });
