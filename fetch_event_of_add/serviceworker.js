@@ -17,6 +17,7 @@ if(!Cache.prototype.addAll){
         }));
     }
     Cache.prototype.add = function(request){
+        console.log("add:",request);
         return this.addAll([request]);
     }
 }
