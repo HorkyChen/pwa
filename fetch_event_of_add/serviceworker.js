@@ -23,7 +23,6 @@ if(!Cache.prototype.addAll){
 }
 
 var urlsToCache = [
-    'https://pages.tmall.com/wow/chaoshi/act/manifest',
     'https://g.alicdn.com/secdev/sufei_data/2.0.4/index.js',
     'https://g.alicdn.com/mui/fetch/4.1.8/??jsonp.js,fetch.js,tool.js',
     'https://img.alicdn.com/bao/uploaded/i4/TB1i5udPFXXXXXqXVXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp'
