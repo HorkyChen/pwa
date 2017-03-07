@@ -10,6 +10,7 @@ if(!Cache.prototype.addAll){
                 // If no valid HTTP/FTP/HTTPS prefix, convert to searching with google.
             }
             return fetch(request.clone()).then(function(res){
+                console.log(res);
                 if (res && res.status === 200) { // >=200 & <300 return OK
                     return cache.put(request, res);
                 }
