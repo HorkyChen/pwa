@@ -1,6 +1,6 @@
 var CACHE = 'cache-update-and-refresh';
 
-if(!Cache.prototype.addAll){
+// if(!Cache.prototype.addAll){
     Cache.prototype.addAll = function(requests){
         var cache = this;
         return Promise.all(requests.map(function(request){
@@ -20,7 +20,7 @@ if(!Cache.prototype.addAll){
         console.log("add:",request);
         return this.addAll([request]);
     }
-}
+// }
 
 var urlsToCache = [
     'https://g.alicdn.com/secdev/sufei_data/2.0.4/index.js',
