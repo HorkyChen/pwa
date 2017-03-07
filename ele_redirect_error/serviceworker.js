@@ -9,7 +9,7 @@ var CACHE = 'cache-redirect-error';
             console.log("Request:",request);
             return fetch(request.clone(), {mode: 'no-cors'}).then(function(res){
                 if (res) {
-                  if (res.ok) { // >=200 & <300 return OK
+                  if (res.status === 200) { // >=200 & <300 return OK
                       console.log("put:",res);
                       return cache.put(request, res);
                   } else {
