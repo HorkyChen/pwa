@@ -9,14 +9,12 @@ var CACHE = 'cache-redirect-error';
             console.log("Request:",request);
             return fetch(request.clone(), {mode: 'no-cors'}).then(function(res){
                 if (res) {
-                  if (res.status === 200) { // >=200 & <300 return OK
+                  if (res.ok) { // >=200 & <300 return OK
                       console.log("put:",res);
                       return cache.put(request, res);
                   } else {
                       console.log("Not OK response:",res);
                   }  
-                } else {
-                  console.log("Failed to get response!");
                 }
             }).catch(function(error){
               console.log(error);
