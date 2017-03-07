@@ -1,5 +1,33 @@
 var CACHE = 'cache-update-and-refresh';
 
+if(!Cache.prototype.addAll){
+    Cache.prototype.addAll = function(requests){
+        var cache = this;
+        return Promise.all(requests.map(function(request){
+            if(!(request instanceof Request)){
+                request = new Request(request);
+                // 传入的字串在多种情况下可以出现错误的情况，比如url中带有username,password等．
+                // If no valid HTTP/FTP/HTTPS prefix, convert to searching with google.
+            }
+            return fetch(request.clone()).then(function(res){
+                if (res && res.status === 200) { // >=200 & <300 return OK
+                    return cache.put(request, res);
+                }
+            });
+        }));
+    }
+    Cache.prototype.add = function(request){
+        return this.addAll([request]);
+    }
+}
+
+var urlsToCache = [
+    'https://pages.tmall.com/wow/chaoshi/act/manifest',
+    'https://g.alicdn.com/secdev/sufei_data/2.0.4/index.js',
+    'https://g.alicdn.com/mui/fetch/4.1.8/??jsonp.js,fetch.js,tool.js',
+    'https://img.alicdn.com/bao/uploaded/i4/TB1i5udPFXXXXXqXVXXXXXXXXXX_!!0-item_pic.jpg_220x10000Q50s50.jpg_.webp'
+];
+
 // On install, cache some resource.
 self.addEventListener('install', function(evt) {
   console.log('The service worker is being installed.');
@@ -8,6 +36,7 @@ self.addEventListener('install', function(evt) {
   // returning promise resolves.
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
     cache.add('./caching.html');
+    cache.addAll(urlsToCache);
   }));
 });
 
