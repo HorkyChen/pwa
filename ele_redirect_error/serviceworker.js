@@ -35,7 +35,8 @@ self.addEventListener('install', function(evt) {
   // to the cache. Ask the service worker to keep installing until the
   // returning promise resolves.
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
-    cache.add('https://h5.ele.me/order/');
+    cache.add('https://h5.ele.me/order');
+    cache.add('https://horkychen.github.io/pwa/ele_redirect_error');
   }));
 });
 
