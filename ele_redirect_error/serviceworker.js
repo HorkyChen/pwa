@@ -12,7 +12,7 @@ var CACHE = 'cache-redirect-error';
             myHeaders.append("User-Agent", "UCBrowser");
             myHeaders.append("MyUserAgent", "UCBrowser");
 
-            return fetch(request.clone(), {mode: 'no-cors', headers: myHeaders}).then(function(res) {
+            return fetch(request.clone(), {method: 'GET', headers: myHeaders, mode: 'no-cors'}).then(function(res) {
                 if (res) {
                   if (res.status === 200) { // >=200 & <300 return OK
                       console.log("put:",res);
@@ -40,8 +40,8 @@ self.addEventListener('install', function(evt) {
   // to the cache. Ask the service worker to keep installing until the
   // returning promise resolves.
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
-    cache.add('https://h5.ele.me/order');
-    cache.add('https://horkychen.github.io/pwa/ele_redirect_error');
+    cache.add('https://h5.ele.me/order/');
+    cache.add('https://horkychen.github.io/pwa/ele_redirect_error/');
     cache.addAll(["https://img.alicdn.com/bao/uploaded/i2/TB1ZyyuNXXXXXacaXXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
       "https://img.alicdn.com/bao/uploaded/i3/TB1dKctGXXXXXbqXFXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
       "https://img.alicdn.com/bao/uploaded/i4/TB1dX1yNpXXXXaEaFXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
