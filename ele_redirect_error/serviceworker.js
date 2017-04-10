@@ -10,6 +10,7 @@ var CACHE = 'cache-redirect-error';
 
             var myHeaders = new Headers();
             myHeaders.append("User-Agent", "UCBrowser");
+            myHeaders.append("MyUserAgent", "UCBrowser");
 
             return fetch(request.clone(), {mode: 'no-cors', headers: myHeaders}).then(function(res) {
                 if (res) {
