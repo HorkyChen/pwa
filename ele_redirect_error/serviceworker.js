@@ -7,14 +7,18 @@ var CACHE = 'cache-redirect-error';
                 request = new Request(request);
             }
             console.log("Request:",request);
-            return fetch(request.clone(), {mode: 'no-cors'}).then(function(res){
+
+            var myHeaders = new Headers();
+            myHeaders.append("User-Agent", "UCBrowser");
+
+            return fetch(request.clone(), {mode: 'no-cors', headers: myHeaders}).then(function(res) {
                 if (res) {
                   if (res.status === 200) { // >=200 & <300 return OK
                       console.log("put:",res);
                       return cache.put(request, res);
                   } else {
                       console.log("Not OK response:",res);
-                  }  
+                  }
                 }
             }).catch(function(error){
               console.log(error);
