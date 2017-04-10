@@ -12,7 +12,7 @@ var CACHE = 'cache-redirect-error';
             myHeaders.append("User-Agent", "UCBrowser");
             myHeaders.append("MyUserAgent", "UCBrowser");
 
-            return fetch(request.clone(), {method: 'GET', headers: myHeaders, mode: 'no-cors', credentials: 'omit'}).then(function(res) {
+            return fetch(request.clone(), {credentials: 'omit'}).then(function(res) {
                 if (res) {
                   if (res.status === 200) { // >=200 & <300 return OK
                       console.log("put:",res);
