@@ -41,6 +41,17 @@ self.addEventListener('install', function(evt) {
   evt.waitUntil(caches.open(CACHE).then(function (cache) {
     cache.add('https://h5.ele.me/order');
     cache.add('https://horkychen.github.io/pwa/ele_redirect_error');
+    cache.addAll(["https://img.alicdn.com/bao/uploaded/i2/TB1ZyyuNXXXXXacaXXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i3/TB1dKctGXXXXXbqXFXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i4/TB1dX1yNpXXXXaEaFXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i1/TB1TGvcLXXXXXaDaXXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i1/TB1TGvcLXXXXXaDaXXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i4/TB1xxJPKVXXXXa0XXXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i3/TB1v8B5HVXXXXXiXpXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i3/TB1Y5XMQXXXXXcnXFXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i1/TB17DjAIFXXXXceXFXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp",
+      "https://img.alicdn.com/bao/uploaded/i4/TB10LcVMVXXXXaOaXXXXXXXXXXX_!!0-item_pic.jpg_420x280Q90s50.jpg_.webp"
+      ]);
   }));
 });
 
