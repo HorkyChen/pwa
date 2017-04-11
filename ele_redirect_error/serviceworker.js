@@ -9,7 +9,6 @@ var CACHE = 'cache-redirect-error';
             console.log("Request:",request);
 
             return fetch(request, {
-                mode:'no-cors',
                 headers: {
                       'X-My-Custom-Header' : 'UCBrowser'
                   }
