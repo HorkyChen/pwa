@@ -1,6 +1,6 @@
 var CACHE = 'cache-redirect-error';
 // if(!Cache.prototype.addAll){
-    Cache.prototype.addAll = function(requests){
+    Cache.prototype.addAll = function(requests) {
         var cache = this;
         return Promise.all(requests.map(function(request){
             if(!(request instanceof Request)){
@@ -8,11 +8,12 @@ var CACHE = 'cache-redirect-error';
             }
             console.log("Request:",request);
 
-            var myHeaders = new Headers();
-            myHeaders.append("User-Agent", "UCBrowser");
-            myHeaders.append("MyUserAgent", "UCBrowser");
-
-            return fetch(request.clone(), {headers: myHeaders, mode:'no-cors'}).then(function(res) {
+            return fetch(request.clone(), {
+                mode:'no-cors',
+                headers: {
+                      'X-My-Custom-Header' : 'UCBrowser'
+                  }
+                }).then(function(res) {
                 if (res) {
                   if (res.status === 200) { // >=200 & <300 return OK
                       console.log("put:",res);
@@ -26,7 +27,7 @@ var CACHE = 'cache-redirect-error';
             });
         }));
     }
-    Cache.prototype.add = function(request){
+    Cache.prototype.add = function(request) {
         console.log("add:",request);
         return this.addAll([request]);
     }
