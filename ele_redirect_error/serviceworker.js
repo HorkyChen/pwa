@@ -3,12 +3,12 @@ var CACHE = 'cache-redirect-error';
     Cache.prototype.addAll = function(requests) {
         var cache = this;
         return Promise.all(requests.map(function(request){
-            if(!(request instanceof Request)){
-                request = new Request(request, {headers: {'X-My-Custom-Header' : 'UCBrowser#1'}});
-            }
+            // if(!(request instanceof Request)){
+            //     request = new Request(request, {headers: {'X-My-Custom-Header' : 'UCBrowser#1'}});
+            // }
             console.log("Request:",request);
 
-            return fetch(request.clone(), {
+            return fetch(request, {
                 mode:'no-cors',
                 headers: {
                       'X-My-Custom-Header' : 'UCBrowser'
