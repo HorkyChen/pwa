@@ -4,7 +4,7 @@ var CACHE = 'cache-redirect-error';
         var cache = this;
         return Promise.all(requests.map(function(request){
             if(!(request instanceof Request)){
-                request = new Request(request);
+                request = new Request(request, {headers: {'X-My-Custom-Header' : 'UCBrowser#1'}});
             }
             console.log("Request:",request);
 
