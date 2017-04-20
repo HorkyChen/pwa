@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Service worker testing</title>
+    </head>
+    <body>
+    <h2>Service Worker Testing</h2>
+     测试离线指定资源!
+    <div id="offline" style="display:none"></div> <br />
+    <input type="button" id="save_for_offline" value="缓存图片到本地">
+    <script>
+        // Register Service Worker
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('serviceworker.js', {
+            scope: './'
+            }).then(function(registration) {
+            console.log('registration successfully!', registration);
+          }).catch(function(error) {
+            console.log('registration failed!', registration);
+          });
+        });
+
+        //处理离线请求
+        var RESOURCE = "offline.png";
+        // 方法一: 使用隐含元素的方法
+        function addHiddenImage() {
+            var img_element = document.createElement("img");
+            img_element.src = RESOURCE;
+            img_element.type = "display:none";
+            document.getElementById('offline').appendChild(img_element);
+        }
+
+        // 方法二: 使用AJAX请求的方法
+        function addWithAjaxRequest() {
+            makeRequest();
+        }
+
+        function makeRequest() {
+            httpRequest = new XMLHttpRequest();
+
+            if (!httpRequest) {
+              alert('Giving up :( Cannot create an XMLHTTP instance');
+              return false;
+            }
+            httpRequest.onreadystatechange = onFinishedOffline;
+            httpRequest.open('GET', RESOURCE);
+            httpRequest.send();
+        }
+
+        function onFinishedOffline() {
+            console.log("Finished to save the resource.");
+        }
+
+        document.querySelector('#save_for_offline').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // addHiddenImage();
+            addWithAjaxRequest(); 
+        });
+
+    </script>
+    </body>
+</html>
