@@ -37,13 +37,16 @@ self.addEventListener('fetch', function(event) {
 
   caches.match(event.request.url).then(function (response) {
     if (response) {
+        console.log('!! Found in the cache!');
         return response;
     }
 
+    console.log('!! Need to load!');
     return fetch(event.request).then(function (response) {
         if (response && response.status === 200) {
           var responseToCache = response.clone();
           caches.open(CACHE).then(function (cache) {
+            console.log('!! Save to cache!');
             cache.put(event.request, responseToCache);
           });
         }
