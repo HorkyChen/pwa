@@ -30,12 +30,13 @@ if(!CacheStorage.prototype.match){
     }
 }
 
-self.addEventListener('install', function(event) {
-    console.log('installing');
-    event.waitUntil(caches.open(CACHE));
-})
+self.addEventListener('activate', function () {
+  self.clients.claim(); // 确保首次安装就会生效
+  console.log('Service worker has been activated!');
+});
 
 self.addEventListener('fetch', function(event) {
+  console.log('*Try to get asset:'+event.request.url);
   if (event.request.url.indexOf('.png') == -1) return;
 
   console.log('The service worker is serving the asset:'+event.request.url);

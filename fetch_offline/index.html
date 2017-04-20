@@ -22,7 +22,7 @@
         });
 
         //处理离线请求
-        var RESOURCE = "offline.png";
+        var RESOURCE = "offline-1.png";
         var httpRequest;
         // 方法一: 使用隐含元素的方法
         function addHiddenImage() {
@@ -57,10 +57,10 @@
         }
 
         document.querySelector('#save_for_offline').addEventListener('click', function(event) {
-            // event.preventDefault();
+            event.preventDefault();
             
+            // 使用两种方式中的一种进行测试
             addHiddenImage();
-
             // addWithAjaxRequest(); 
         });
 
