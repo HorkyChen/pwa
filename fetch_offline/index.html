@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Service worker testing</title>
     </head>
     <body>
@@ -22,6 +23,7 @@
 
         //处理离线请求
         var RESOURCE = "offline.png";
+        var httpRequest;
         // 方法一: 使用隐含元素的方法
         function addHiddenImage() {
             var img_element = document.createElement("img");
@@ -39,7 +41,6 @@
             httpRequest = new XMLHttpRequest();
 
             if (!httpRequest) {
-              alert('Giving up :( Cannot create an XMLHTTP instance');
               return false;
             }
             httpRequest.onreadystatechange = onFinishedOffline;
@@ -48,14 +49,19 @@
         }
 
         function onFinishedOffline() {
-            console.log("Finished to save the resource.");
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    console.log("Finished to save the resource.");
+                }
+            }
         }
 
         document.querySelector('#save_for_offline').addEventListener('click', function(event) {
-            event.preventDefault();
+            // event.preventDefault();
             
-            // addHiddenImage();
-            addWithAjaxRequest(); 
+            addHiddenImage();
+
+            // addWithAjaxRequest(); 
         });
 
     </script>

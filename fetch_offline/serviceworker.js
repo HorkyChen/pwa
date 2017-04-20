@@ -30,27 +30,32 @@ if(!CacheStorage.prototype.match){
     }
 }
 
+self.addEventListener('install', function(event) {
+    console.log('installing');
+    event.waitUntil(caches.open(CACHE));
+})
+
 self.addEventListener('fetch', function(event) {
   if (event.request.url.indexOf('.png') == -1) return;
 
   console.log('The service worker is serving the asset:'+event.request.url);
 
-  caches.match(event.request.url).then(function (response) {
-    if (response) {
-        console.log('!! Found in the cache!');
-        return response;
-    }
+  caches.open(CACHE).then(function (cache) {
+      cache.match(event.request.url).then(function (response) {
+      if (response) {
+          console.log('!! Found in the cache!');
+          return response;
+      }
 
-    console.log('!! Need to load!');
-    return fetch(event.request).then(function (response) {
-        if (response && response.status === 200) {
-          var responseToCache = response.clone();
-          caches.open(CACHE).then(function (cache) {
+      console.log('!! Need to load!');
+      return fetch(event.request).then(function (response) {
+          if (response && response.status === 200) {
+            var responseToCache = response.clone();
             console.log('!! Save to cache!');
             cache.put(event.request, responseToCache);
-          });
-        }
-        return response;
+          }
+          return response;
+      });
     });
   });
 });
