@@ -11,7 +11,7 @@
 
         .ui-icon-loading {
             position: fixed;
-            z-index: 999;
+            z-index: -10;
             width: 100%;
             height: 100%;
             display: table;
@@ -33,8 +33,18 @@
     </style>
 </head>
 <body>
+    <div id="counter"></div>
 <div class="ui-icon-loading page-loading" style="">
     <i></i>
 </div>
+<script>
+    var count = 0;
+    window.onload = function() {
+        setInterval(function() {
+            count = count + 1;
+            document.getElementById("counter").innerText = '' + count;
+        }, 1000);
+    }
+</script>
 </body>
 </html>
