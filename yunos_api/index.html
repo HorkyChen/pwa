@@ -10,8 +10,8 @@
         var result = "";
         var infos = Wifi.getScannedAp();
         for (let i = 0; i < infos.length; i++) {
-            console.log("Wifi AP:: " + infos[i].apName);
-            result += infos[i].apName +"<br/>";
+            console.log("Wifi AP:: " + infos[i]._apId.essid);
+            result += infos[i]._apId.essid +"<br/>";
         }
 
         document.write(result);
