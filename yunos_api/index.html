@@ -8,8 +8,7 @@
 <script type="text/javascript">
     function getAPInfo() {
         var result = "";
-        var ret = Wifi.getScannedAp();
-        var infos = ret.apInfo;
+        var infos = Wifi.getScannedAp();
         for (let i = 0; i < infos.length; i++) {
             console.log("Wifi AP:: " + infos[i].apName);
             result += infos[i].apName +"<br/>";
