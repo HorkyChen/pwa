@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Checking</title>
+</head>
+<body>
+<script type="text/javascript">
+    function getAPInfo() {
+        var result = "";
+        var ret = Wifi.getScannedAp();
+        var infos = ret.apInfo;
+        for (let i = 0; i < infos.length; i++) {
+            console.log("Wifi AP:: " + infos[i].apName);
+            result += infos[i].apName +"<br/>";
+        }
+
+        document.write(result);
+    }
+
+    window.onload = function() {
+        getAPInfo();
+    }
+</script>
+</body>
+</html>
