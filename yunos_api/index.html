@@ -8,8 +8,9 @@
 <script type="text/javascript">
     function getAPInfo() {
         if (window.Wifi === undefined) {
-            var Wifi = yunos.require("yunos/net/wifi/Wifi");
+            var Wifi = yunos.require("yunos/net/wifi/Wifi").getInstance();
         }
+        console.log(Wifi);
         var result = "";
         var infos = Wifi.getScannedAp();
         for (let i = 0; i < infos.length; i++) {
