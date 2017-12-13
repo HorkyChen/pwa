@@ -7,10 +7,8 @@
 <body>
 <script type="text/javascript">
     function getAPInfo() {
-        console.log(require);
-        console.log(yunos.require);
         if (window.Wifi === undefined) {
-            var Wifi = require("yunos/net/wifi/Wifi").getInstance();
+            var Wifi = yunos.require("yunos/net/wifi/Wifi").getInstance();
         }
         console.log(Wifi);
         var result = "";
@@ -25,6 +23,10 @@
 
     window.onload = function() {
         getAPInfo();
+
+        var instance = require("yunos/cloudfs/Context").getInstance();
+        var publicDir = instance.getPublicDir();
+        console.log(publicDir);
     }
 </script>
 </body>
