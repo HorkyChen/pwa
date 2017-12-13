@@ -7,8 +7,10 @@
 <body>
 <script type="text/javascript">
     function getAPInfo() {
+        console.log(require);
+        console.log(yunos.require);
         if (window.Wifi === undefined) {
-            var Wifi = yunos.require("yunos/net/wifi/Wifi").getInstance();
+            var Wifi = require("yunos/net/wifi/Wifi").getInstance();
         }
         console.log(Wifi);
         var result = "";
