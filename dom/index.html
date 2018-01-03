@@ -9,31 +9,60 @@
 <body>
 <br/>
 <br/>
-<h1>V2</h1>
+<h1>V3</h1>
 <button>Hello World</button>
 <input/>
 <input>
 <div id="inner-editor"></div>
 </input>
+<form id="login-form" action="https://reg.163.com/mlogin.jsp" method="post">
+                    <div class="login-container">
+                        <div class="inputbox" id="account-box">
+                            <div class="u-input box">
+                                <label class="u-label ne_user"></label>
+                                <input name="username" class="dlemail" type="text" id="email"
+                                       placeholder="example@163.com" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="u-input box">
+                                <label class="u-label ne_passwd"></label>
+                                <input name="password" class="dlpwd" type="password" id="password">
+                                <input name="savelogin" id="savelogin" value="1" type="hidden">
+                                <input id="passtype" name="passtype" value="1" type="hidden">
+                                <input id="noRedirect" name="noRedirect" value="1" type="hidden">
+                                <input name="savelogin" maxlength="16" value="1" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="inputbox verify_wrap clearfix">
+                            <div class="u-input box">
+                                <input name="verify" class="verifybox" type="text" id="verifybox">
+                                <div class="verifyimg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loginbox clearfix">
+                        <a id="dologin" data-action="dologin" class="u-loginbtn">登&nbsp;&nbsp;录</a>
+                        <div id="dologin">登录</div>
+                        <div class="reg"><a
+                                href="http://reg.163.com/reg/regClient.jsp?product=youdaodict_client&url=http://3g.163.com">立即注册</a>
+                        </div>
+                        <div class="fgtpwdbox"><a href="http://reg.163.com/getpasswd/RetakePassword.jsp">忘记密码</a></div>
+                    </div>
+</form>
 
 <script>
     function n() {
-        let e = null;
-        let x=[{type: "hidden", id: "url", name: "url", value: "https://3g.163.com/touch/login_frame.html"},{type: "hidden", id: "url2", name: "url2", value: "https://3g.163.com/touch/login_frame.html"}, {type: "hidden", id: "noRedirect", name: "noRedirect", value: "1"}]
-        t = {
-            type:"hidden",
-            id: "url",
-            name: "url",
-            value: "https://3g.163.com/touch/login_frame.html"
-        };
+        let x=[{type: "hidden", id: "url", name: "url", value: "https://3g.163.com/touch/login_frame.html"},
+               {type: "hidden", id: "url2", name: "url2", value: "https://3g.163.com/touch/login_frame.html"},
+               {type: "hidden", id: "noRedirect", name: "noRedirect", value: "1"},
+               {type: "hidden", id: "noRedirect", name: "noRedirect", value: "1"}]
 
-        let y = "frame";
         x && $.each(x, function(e, t) {
             var n = $("<input/>");
             $.each(t, function(e, t) {
                 n.attr(e, t)
             })
-            //  p.append(n)
         })
     }
 
