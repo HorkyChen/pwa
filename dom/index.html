@@ -7,12 +7,13 @@
 </head>
 <body>
 <button>Hello World</button>
+<input>
+<div id="inner-editor"></div>
+</input>
 <script>
     window.onload = function() {
-        var b = document.querySelector("button");
-
-        b.setAttribute("name", "helloButton");
-        b.setAttribute("disabled", "");
+        var b = document.querySelector("input");
+        b.setAttribute("type", "hidden");
     }
 </script>
 </body>
