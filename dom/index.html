@@ -4,19 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Test</title>
+    <script src="./zepto.js"></script>
 </head>
 <body>
 <br/>
 <br/>
 <h1>V2</h1>
 <button>Hello World</button>
+<input/>
 <input>
 <div id="inner-editor"></div>
 </input>
+
 <script>
+    function n() {
+        let e = null;
+        let x=[{type: "hidden", id: "url", name: "url", value: "https://3g.163.com/touch/login_frame.html"},{type: "hidden", id: "url2", name: "url2", value: "https://3g.163.com/touch/login_frame.html"}, {type: "hidden", id: "noRedirect", name: "noRedirect", value: "1"}]
+        t = {
+            type:"hidden",
+            id: "url",
+            name: "url",
+            value: "https://3g.163.com/touch/login_frame.html"
+        };
+
+        let y = "frame";
+        x && $.each(x, function(e, t) {
+            var n = $("<input/>");
+            $.each(t, function(e, t) {
+                n.attr(e, t)
+            })
+            //  p.append(n)
+        })
+    }
+
     window.onload = function() {
         var b = document.querySelector("input");
         b.setAttribute("type", "hidden");
+
+        n();
     }
 </script>
 </body>
